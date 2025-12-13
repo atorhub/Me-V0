@@ -109,6 +109,19 @@ function applyLanguage(lang) {
   localStorage.setItem("me-language", lang);
   console.log("[LANG]", lang, "applied");
         }
+function applyLanguage(lang) {
+  const nodes = document.querySelectorAll("[data-i18n]");
+
+  nodes.forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  localStorage.setItem("me-language", lang);
+  console.log("[LANG]", lang, "applied");
+}
 
 /* =========================
    PAGE NAVIGATION — PHASE 1
