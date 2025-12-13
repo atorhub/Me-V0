@@ -94,3 +94,19 @@ body.theme-zen {
 .debug-hidden {
   display: none;
 }
+.settings-group {
+  margin: 16px 0;
+}
+
+.settings-group label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.settings-group select {
+  display: block;
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
