@@ -78,3 +78,39 @@ function initNavigation() {
 }
 
 document.addEventListener('DOMContentLoaded', initNavigation);
+/* =========================
+   DEBUG LOGGER
+========================= */
+
+const debugLogEl = document.getElementById('debugLog');
+const debugPanel = document.getElementById('debugPanel');
+const debugToggle = document.getElementById('debugToggle');
+const debugClear = document.getElementById('debugClear');
+
+function debug(msg, type = 'info') {
+  if (!debugLogEl) return;
+
+  const line = document.createElement('div');
+  const time = new Date().toLocaleTimeString();
+
+  line.textContent = `[${time}] ${msg}`;
+  line.style.color =
+    type === 'error' ? '#ff6b6b' :
+    type === 'warn'  ? '#feca57' :
+    '#0f0';
+
+  debugLogEl.appendChild(line);
+  debugLogEl.scrollTop = debugLogEl.scrollHeight;
+
+  console.log('[ME]', msg);
+}
+
+debugToggle?.addEventListener('click', () => {
+  debugPanel.classList.toggle('debug-hidden');
+});
+
+debugClear?.addEventListener('click', () => {
+  debugLogEl.innerHTML = '';
+});
+
+debug('Debug system initialized');
