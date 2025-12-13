@@ -114,3 +114,28 @@ debugClear?.addEventListener('click', () => {
 });
 
 debug('Debug system initialized');
+// ===============================
+// SETTINGS SYSTEM — PHASE 1
+// ===============================
+function initSettings() {
+  const langSelect = document.getElementById('langSelect');
+  if (!langSelect) {
+    console.warn('[SETTINGS] langSelect not found');
+    return;
+  }
+
+  const savedLang = localStorage.getItem('me-lang') || 'en';
+  langSelect.value = savedLang;
+  console.log('[SETTINGS] Language loaded:', savedLang);
+
+  langSelect.addEventListener('change', (e) => {
+    const lang = e.target.value;
+    localStorage.setItem('me-lang', lang);
+    logDebug(`[SETTINGS] Language changed → ${lang}`);
+  });
+}
+
+// Init safely
+document.addEventListener('DOMContentLoaded', () => {
+  initSettings();
+});
