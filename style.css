@@ -24,3 +24,27 @@ body.theme-zen {
   background: linear-gradient(135deg, #a18cd1, #fbc2eb);
   color: #1a1a1a;
 }
+/* =========================
+   PAGE NAVIGATION — PHASE 1
+========================= */
+
+.page {
+  display: none;
+  padding: 24px;
+  animation: fadeIn 0.35s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
