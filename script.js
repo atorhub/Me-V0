@@ -43,3 +43,38 @@ function initThemes() {
 document.addEventListener('DOMContentLoaded', () => {
   initThemes();
 });
+/* =========================
+   PAGE NAVIGATION — PHASE 1
+========================= */
+
+function initNavigation() {
+  const navButtons = document.querySelectorAll('nav button[data-page]');
+  const pages = document.querySelectorAll('.page');
+
+  if (!navButtons.length || !pages.length) {
+    console.warn('[ME] Navigation elements not found');
+    return;
+  }
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-page');
+
+      pages.forEach(p => p.classList.remove('active'));
+      navButtons.forEach(b => b.classList.remove('active'));
+
+      const page = document.getElementById(target);
+      if (page) {
+        page.classList.add('active');
+        btn.classList.add('active');
+        console.log('[NAV] Page switched to:', target);
+      } else {
+        console.warn('[NAV] Page not found:', target);
+      }
+    });
+  });
+
+  console.log('[ME] Navigation initialized');
+}
+
+document.addEventListener('DOMContentLoaded', initNavigation);
