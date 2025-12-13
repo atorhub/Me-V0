@@ -1,3 +1,21 @@
+console.log('[ME] script.js loaded');
+function initThemes() {
+  const themeSelect = document.getElementById('themeSelect');
+  if (!themeSelect) {
+    console.warn('[ME] themeSelect not found');
+    return;
+  }
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('me-theme') || 'rose';
+  applyTheme(savedTheme);
+  themeSelect.value = savedTheme;
+
+  themeSelect.addEventListener('change', (e) => {
+    applyTheme(e.target.value);
+  });
+}
+
 // THEME SYSTEM — PHASE 1 FIX
 const themeSelect = document.getElementById('themeSelect');
 
@@ -25,4 +43,11 @@ if (themeSelect) {
   themeSelect.addEventListener('change', (e) => {
     applyTheme(e.target.value);
   });
+}
+// === FORCE INITIALIZATION ===
+if (typeof initThemes === 'function') {
+  initThemes();
+  console.log('[ME] Themes initialized');
+} else {
+  console.warn('[ME] initThemes() not found');
 }
