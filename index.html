@@ -63,9 +63,35 @@
   </section>
 
   <section id="settings" class="page">
-    <h1>Settings</h1>
-    <p>Language, voice, theme controls.</p>
+  <h1>Settings</h1>
+  <p>Language, voice, theme controls.</p>
+
+  <div class="settings-group">
+    <label for="langSelect">Language</label>
+    <select id="langSelect">
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="pa">Punjabi</option>
+      <option value="id">Indonesian</option>
+      <option value="pt">Portuguese</option>
+    </select>
+  </div>
+
+  <div class="settings-group">
+    <label>
+      <input type="checkbox" id="voiceToggle" disabled />
+      Voice Input (coming soon)
+    </label>
+  </div>
+
+  <div class="settings-group">
+    <label>
+      <input type="checkbox" id="cameraToggle" disabled />
+      Camera OCR (coming soon)
+    </label>
+  </div>
   </section>
+  
 
   <section id="help" class="page">
     <h1>Help</h1>
