@@ -48,3 +48,49 @@ body.theme-zen {
     transform: translateY(0);
   }
 }
+/* =========================
+   DEBUG PANEL
+========================= */
+
+.debug-panel {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 320px;
+  max-height: 40vh;
+  background: rgba(0,0,0,0.85);
+  color: #0f0;
+  font-family: monospace;
+  font-size: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.debug-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 6px 8px;
+  font-weight: bold;
+}
+
+.debug-header button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.debug-log {
+  padding: 6px;
+  overflow-y: auto;
+  max-height: 30vh;
+}
+
+.debug-hidden {
+  display: none;
+}
