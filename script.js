@@ -1,29 +1,28 @@
-console.log("ME V0 — Phase 1 JS Loaded");
+// THEME SYSTEM — PHASE 1 FIX
+const themeSelect = document.getElementById('themeSelect');
 
-const pages = document.querySelectorAll(".page");
-const navButtons = document.querySelectorAll("nav button");
-const themeSelect = document.getElementById("themeSelect");
+function applyTheme(theme) {
+  document.body.classList.remove(
+    'theme-rose',
+    'theme-midnight',
+    'theme-zen'
+  );
+  document.body.classList.add(`theme-${theme}`);
+  localStorage.setItem('me-theme', theme);
 
-// Page routing
-navButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.page;
+  console.log('[THEME]', theme, 'applied');
+}
 
-    pages.forEach(p => p.classList.remove("active"));
-    document.getElementById(target).classList.add("active");
+// Load saved theme
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('me-theme') || 'rose';
+  applyTheme(savedTheme);
+  if (themeSelect) themeSelect.value = savedTheme;
+});
 
-    console.log("Page switched to:", target);
+// Handle dropdown change
+if (themeSelect) {
+  themeSelect.addEventListener('change', (e) => {
+    applyTheme(e.target.value);
   });
-});
-
-// Theme system
-const savedTheme = localStorage.getItem("me-theme") || "rose";
-document.body.classList.add(savedTheme);
-themeSelect.value = savedTheme;
-
-themeSelect.addEventListener("change", () => {
-  document.body.className = "";
-  document.body.classList.add(themeSelect.value);
-  localStorage.setItem("me-theme", themeSelect.value);
-  console.log("Theme changed:", themeSelect.value);
-});
+}
