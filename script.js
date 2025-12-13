@@ -43,6 +43,60 @@ function initThemes() {
 document.addEventListener('DOMContentLoaded', () => {
   initThemes();
 });
+/* ===============================
+   UI TRANSLATIONS — PHASE 1B
+================================ */
+
+const translations = {
+  en: {
+    dashboard_title: "Dashboard",
+    dashboard_desc: "System status and analytics will appear here.",
+    nav_dashboard: "Dashboard",
+    nav_upload: "Upload",
+    nav_ocr: "OCR",
+    nav_live_ocr: "Live OCR",
+    nav_history: "History",
+    nav_translate: "Translate",
+    nav_settings: "Settings",
+    nav_help: "Help",
+    settings_title: "Settings",
+    settings_desc: "Language, voice, theme controls.",
+    settings_language: "Language"
+  },
+
+  hi: {
+    dashboard_title: "डैशबोर्ड",
+    dashboard_desc: "सिस्टम स्थिति और विश्लेषण यहां दिखाई देंगे।",
+    nav_dashboard: "डैशबोर्ड",
+    nav_upload: "अपलोड",
+    nav_ocr: "ओसीआर",
+    nav_live_ocr: "लाइव ओसीआर",
+    nav_history: "इतिहास",
+    nav_translate: "अनुवाद",
+    nav_settings: "सेटिंग्स",
+    nav_help: "मदद",
+    settings_title: "सेटिंग्स",
+    settings_desc: "भाषा, वॉयस, थीम नियंत्रण।",
+    settings_language: "भाषा"
+  },
+
+  bn: {
+    dashboard_title: "ড্যাশবোর্ড",
+    dashboard_desc: "সিস্টেমের অবস্থা ও বিশ্লেষণ এখানে দেখা যাবে।",
+    nav_dashboard: "ড্যাশবোর্ড",
+    nav_upload: "আপলোড",
+    nav_ocr: "ওসিআর",
+    nav_live_ocr: "লাইভ ওসিআর",
+    nav_history: "ইতিহাস",
+    nav_translate: "অনুবাদ",
+    nav_settings: "সেটিংস",
+    nav_help: "সাহায্য",
+    settings_title: "সেটিংস",
+    settings_desc: "ভাষা, ভয়েস, থিম নিয়ন্ত্রণ।",
+    settings_language: "ভাষা"
+  }
+};
+
 /* =========================
    PAGE NAVIGATION — PHASE 1
 ========================= */
