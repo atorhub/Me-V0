@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ME V0 — Boot Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="theme-dark">
+
+  <header class="topbar">
+    <div class="logo">ME<span>V0</span></div>
+
+    <select id="themeSelect">
+      <option value="dark">Dark</option>
+      <option value="rose">Rose</option>
+      <option value="fairy">Fairy</option>
+    </select>
+  </header>
+
+  <main class="container">
+    <h1>ME — Boot Test</h1>
+    <p>If buttons work, JS is alive.</p>
+
+    <div class="buttons">
+      <button id="btnTest">Test Button</button>
+      <button id="btnTheme">Log Theme</button>
+    </div>
+
+    <pre id="output">Waiting...</pre>
+  </main>
+
+  <footer class="footer">
+    ME V0 · Phase 0 · Debug Enabled
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
