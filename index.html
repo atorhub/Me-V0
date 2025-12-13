@@ -2,40 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ME V0 — Boot Mode</title>
+  <title>ME V0 — Multi-Lang Invoice Engine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-<body class="theme-dark">
+<header class="topbar">
+  <div class="logo">ME <span>V0</span></div>
 
-  <header class="topbar">
-    <div class="logo">ME<span>V0</span></div>
+  <nav>
+    <button data-page="dashboard">Dashboard</button>
+    <button data-page="upload">Upload</button>
+    <button data-page="ocr">OCR</button>
+    <button data-page="live">Live OCR</button>
+    <button data-page="history">History</button>
+    <button data-page="translate">Translate</button>
+    <button data-page="settings">Settings</button>
+    <button data-page="help">Help</button>
+  </nav>
 
-    <select id="themeSelect">
-      <option value="dark">Dark</option>
-      <option value="rose">Rose</option>
-      <option value="fairy">Fairy</option>
-    </select>
-  </header>
+  <select id="themeSelect">
+    <option value="rose">Rose</option>
+    <option value="midnight">Midnight</option>
+    <option value="zen">Zen</option>
+  </select>
+</header>
 
-  <main class="container">
-    <h1>ME — Boot Test</h1>
-    <p>If buttons work, JS is alive.</p>
+<main id="app">
 
-    <div class="buttons">
-      <button id="btnTest">Test Button</button>
-      <button id="btnTheme">Log Theme</button>
-    </div>
+  <section id="dashboard" class="page active">
+    <h1>Dashboard</h1>
+    <p>System status and analytics will appear here.</p>
+  </section>
 
-    <pre id="output">Waiting...</pre>
-  </main>
+  <section id="upload" class="page">
+    <h1>Upload</h1>
+    <p>Invoice upload UI (Phase 2).</p>
+  </section>
 
-  <footer class="footer">
-    ME V0 · Phase 0 · Debug Enabled
-  </footer>
+  <section id="ocr" class="page">
+    <h1>OCR</h1>
+    <p>Image OCR engine (Phase 2).</p>
+  </section>
 
-  <script src="script.js"></script>
+  <section id="live" class="page">
+    <h1>Live OCR</h1>
+    <p>Camera OCR (Phase 3).</p>
+  </section>
+
+  <section id="history" class="page">
+    <h1>History</h1>
+    <p>Processed invoices history.</p>
+  </section>
+
+  <section id="translate" class="page">
+    <h1>Translate</h1>
+    <p>Text translation UI.</p>
+  </section>
+
+  <section id="settings" class="page">
+    <h1>Settings</h1>
+    <p>Language, voice, theme controls.</p>
+  </section>
+
+  <section id="help" class="page">
+    <h1>Help</h1>
+    <p>User guide & tips.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  ME V0 — Phase 1 UI • Debug Enabled
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
