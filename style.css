@@ -163,3 +163,12 @@ body.theme-zen {
 .counter {
   transition: color 0.3s ease;
 }
+.bar {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: growBar 0.8s ease forwards;
+}
+
+@keyframes growBar {
+  to { transform: scaleY(1); }
+}
