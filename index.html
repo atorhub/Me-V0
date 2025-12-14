@@ -37,21 +37,6 @@
   <h1 data-i18n="dashboard_title">Dashboard</h1>
   <p data-i18n="dashboard_desc">System status and analytics</p>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <h2 class="counter" data-count="24">0</h2>
-    
-      <span>Total Invoices</span>
-    </div>
-    <div class="stat-card">
-      <h2>18</h2>
-      <span>Processed</span>
-    </div>
-    <div class="stat-card">
-      <h2>2</h2>
-      <span>Errors</span>
-    </div>
-  </div>
 
   <div class="chart-box">
     <h3>Invoices Overview</h3>
@@ -61,7 +46,23 @@
 
 <section id="upload" class="page">
   <h1 data-i18n="upload_title">Upload Invoice</h1>
-  <p data-i18n="upload_desc">Select an invoice file to process.</p>
+  <p data-i18n="upload_desc">Select an in<div class="stats-grid">
+  <div class="stat-card">
+    <h2 class="stat-number" data-counter="totalInvoices">0</h2>
+    <span>Total Invoices</span>
+  </div>
+
+  <div class="stat-card">
+    <h2 class="stat-number" data-counter="processedInvoices">0</h2>
+    <span>Processed</span>
+  </div>
+
+  <div class="stat-card">
+    <h2 class="stat-number" data-counter="errorInvoices">0</h2>
+    <span>Errors</span>
+  </div>
+  </div>
+  voice file to process.</p>
 
   <div class="upload-box">
     <input type="file" id="invoiceFile" accept=".jpg,.png,.pdf" />
