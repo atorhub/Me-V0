@@ -73,15 +73,16 @@ function initUpload() {
 // DASHBOARD COUNTER HELPER
 // ===============================
 function incrementCounter(key) {
-  const el = document.querySelector(`[data-counter="${key}"]`);
-  if (!el) {
-    console.warn('[COUNTER] Missing element:', key);
-    return;
-  }
+  const current = parseInt(localStorage.getItem(key)) || 0;
+  const next = current + 1;
+  localStorage.setItem(key, next);
 
-  const current = parseInt(el.textContent) || 0;
-  el.textContent = current + 1;
+  const el = document.querySelector(`[data-counter="${key}"]`);
+  if (el) el.textContent = next;
+
+  console.log('[COUNTER]', key, '=>', next);
 }
+
 
 // ============================
 // APP BOOT
@@ -93,6 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initupload();
   console.log('[ME] App initialized');
+});
+['totalInvoices', 'processedInvoices', 'errorInvoices'].forEach(key => {
+  const val = localStorage.getItem(key) || 0;
+  const el = document.querySelector(`[data-counter="${key}"]`);
+  if (el) el.textContent = val;
 });
 
 /* ===============================
