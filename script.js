@@ -264,3 +264,27 @@ function renderInvoiceChart() {
 }
 
 document.addEventListener("DOMContentLoaded", renderInvoiceChart);
+function animateCounters() {
+  const counters = document.querySelectorAll(".counter");
+
+  counters.forEach(counter => {
+    const target = +counter.dataset.count;
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 40));
+
+    const update = () => {
+      current += step;
+      if (current >= target) {
+        counter.textContent = target;
+      } else {
+        counter.textContent = current;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", animateCounters);
+      
