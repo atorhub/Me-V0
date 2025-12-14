@@ -42,7 +42,11 @@ function initThemes() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemes();
+  initLanguage();
+  initNavigation();
+  console.log('[ME] App initialized');
 });
+
 /* ===============================
    UI TRANSLATIONS — PHASE 1B
 ================================ */
@@ -97,31 +101,30 @@ const translations = {
   }
 };
 function applyLanguage(lang) {
-  const nodes = document.querySelectorAll("[data-i18n]");
-
-  nodes.forEach(el => {
-    const key = el.getAttribute("data-i18n");
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
       el.textContent = translations[lang][key];
     }
   });
 
-  localStorage.setItem("me-language", lang);
-  console.log("[LANG]", lang, "applied");
-        }
-function applyLanguage(lang) {
-  const nodes = document.querySelectorAll("[data-i18n]");
-
-  nodes.forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-
-  localStorage.setItem("me-language", lang);
-  console.log("[LANG]", lang, "applied");
+  localStorage.setItem('me-language', lang);
+  console.log('[LANG]', lang, 'applied');
 }
+
+function initLanguage() {
+  const langSelect = document.getElementById('langSelect');
+  if (!langSelect) return;
+
+  const savedLang = localStorage.getItem('me-language') || 'en';
+  langSelect.value = savedLang;
+  applyLanguage(savedLang);
+
+  langSelect.addEventListener('change', (e) => {
+    applyLanguage(e.target.value);
+  });
+}
+
 
 /* =========================
    PAGE NAVIGATION — PHASE 1
