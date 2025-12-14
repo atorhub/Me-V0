@@ -268,23 +268,23 @@ function animateCounters() {
   const counters = document.querySelectorAll(".counter");
 
   counters.forEach(counter => {
-    const target = +counter.dataset.count;
-    let current = 0;
-    const step = Math.max(1, Math.floor(target / 40));
+    const target = Number(counter.dataset.count);
+    counter.textContent = "0";
 
-    const update = () => {
+    let current = 0;
+    const step = Math.max(1, Math.ceil(target / 30));
+
+    const tick = () => {
       current += step;
       if (current >= target) {
         counter.textContent = target;
       } else {
         counter.textContent = current;
-        requestAnimationFrame(update);
+        requestAnimationFrame(tick);
       }
     };
 
-    update();
+    tick();
   });
 }
 
-document.addEventListener("DOMContentLoaded", animateCounters);
-      
