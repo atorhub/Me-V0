@@ -243,3 +243,24 @@ function initSettings() {
 document.addEventListener('DOMContentLoaded', () => {
   initSettings();
 });
+function renderInvoiceChart() {
+  const canvas = document.getElementById("invoiceChart");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  canvas.width = canvas.offsetWidth;
+  canvas.height = 180;
+
+  const data = [5, 9, 6, 12, 8, 14];
+  const max = Math.max(...data);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  data.forEach((value, i) => {
+    const barHeight = (value / max) * 140;
+    ctx.fillStyle = "#4ade80";
+    ctx.fillRect(i * 50 + 20, 160 - barHeight, 30, barHeight);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", renderInvoiceChart);
