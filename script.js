@@ -35,6 +35,53 @@ function initThemes() {
 
   console.log('[ME] Theme system initialized');
 }
+// ===============================
+// UPLOAD — PHASE 1 (MOCK)
+// ===============================
+
+function initUpload() {
+  const fileInput = document.getElementById('invoiceFile');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const status = document.getElementById('uploadStatus');
+
+  if (!fileInput || !uploadBtn || !status) {
+    console.warn('[UPLOAD] elements missing');
+    return;
+  }
+
+  uploadBtn.addEventListener('click', () => {
+    const file = fileInput.files[0];
+
+    if (!file) {
+      status.textContent = 'Please select a file first.';
+      return;
+    }
+
+    status.textContent = `Processing: ${file.name}...`;
+
+    // Fake processing delay
+    setTimeout(() => {
+      incrementCounter('totalInvoices');
+      incrementCounter('processedInvoices');
+
+      status.textContent = `Processed: ${file.name}`;
+      console.log('[UPLOAD] processed', file.name);
+    }, 1000);
+  });
+}
+// ===============================
+// DASHBOARD COUNTER HELPER
+// ===============================
+function incrementCounter(key) {
+  const el = document.querySelector(`[data-counter="${key}"]`);
+  if (!el) {
+    console.warn('[COUNTER] Missing element:', key);
+    return;
+  }
+
+  const current = parseInt(el.textContent) || 0;
+  el.textContent = current + 1;
+}
 
 // ============================
 // APP BOOT
@@ -44,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemes();
   initLanguage();
   initNavigation();
+  initupload();
   console.log('[ME] App initialized');
 });
 
