@@ -124,6 +124,27 @@ function initLanguage() {
     applyLanguage(e.target.value);
   });
 }
+/* ============================
+   UPLOAD UI — PHASE 2.1
+============================ */
+
+const fileInput = document.getElementById("invoiceFile");
+const uploadBtn = document.getElementById("uploadBtn");
+const uploadStatus = document.getElementById("uploadStatus");
+
+if (uploadBtn) {
+  uploadBtn.addEventListener("click", () => {
+    if (!fileInput.files.length) {
+      uploadStatus.textContent = "No file selected.";
+      console.warn("[UPLOAD] No file selected");
+      return;
+    }
+
+    const file = fileInput.files[0];
+    uploadStatus.textContent = `Selected: ${file.name}`;
+    console.log("[UPLOAD] File selected:", file.name);
+  });
+    }
 
 
 /* =========================
