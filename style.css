@@ -160,3 +160,6 @@ body.theme-zen {
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.1);
 }
+.counter {
+  transition: color 0.3s ease;
+}
