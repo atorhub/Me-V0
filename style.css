@@ -110,3 +110,22 @@ body.theme-zen {
   border-radius: 6px;
   border: none;
 }
+/* ============================
+   UPLOAD UI — PHASE 2.1
+============================ */
+
+.upload-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.upload-box input {
+  flex: 1;
+}
+
+.upload-status {
+  margin-top: 10px;
+  font-style: italic;
+  opacity: 0.9;
+}
