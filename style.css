@@ -129,3 +129,34 @@ body.theme-zen {
   font-style: italic;
   opacity: 0.9;
 }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.stat-card h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.stat-card span {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.chart-box {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+}
