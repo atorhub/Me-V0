@@ -1,3 +1,5 @@
+alert("SCRIPT LOADED");
+
 console.log('[ME] script.js loaded');
 
 // ============================
