@@ -35,40 +35,7 @@ function initThemes() {
 
   console.log('[ME] Theme system initialized');
 }
-// ===============================
-// UPLOAD — PHASE 1 (MOCK)
-// ===============================
 
-function initUpload() {
-  const fileInput = document.getElementById('invoiceFile');
-  const uploadBtn = document.getElementById('uploadBtn');
-  const status = document.getElementById('uploadStatus');
-
-  if (!fileInput || !uploadBtn || !status) {
-    console.warn('[UPLOAD] elements missing');
-    return;
-  }
-
-  uploadBtn.addEventListener('click', () => {
-    const file = fileInput.files[0];
-
-    if (!file) {
-      status.textContent = 'Please select a file first.';
-      return;
-    }
-
-    status.textContent = `Processing: ${file.name}...`;
-
-    // Fake processing delay
-    setTimeout(() => {
-      incrementCounter('totalInvoices');
-      incrementCounter('processedInvoices');
-
-      status.textContent = `Processed: ${file.name}`;
-      console.log('[UPLOAD] processed', file.name);
-    }, 1000);
-  });
-}
 // ===============================
 // DASHBOARD COUNTER HELPER
 // ===============================
@@ -394,4 +361,9 @@ document.getElementById("uploadBtn").addEventListener("click", () => {
 
   updateCounters();
 });
-
+document.addEventListener("DOMContentLoaded", () => {
+  initNavigation();
+  initLanguage();
+  initUploadUI(); // 🔥 THIS WAS MISSING
+});
+  
