@@ -1,95 +1,52 @@
 console.log('[ME] script.js loaded');
-alert("SCRIPT IS LOADING");
+alert('SCRIPT IS LOADING');
 
-/* -------------------------
-   THEME
--------------------------- */
-function initThemes() {
-  const themeSelect = document.getElementById('themeSelect');
-  if (!themeSelect) return;
-
-  const saved = localStorage.getItem('me-theme') || 'light';
-  document.body.dataset.theme = saved;
-  themeSelect.value = saved;
-
-  themeSelect.addEventListener('change', e => {
-    document.body.dataset.theme = e.target.value;
-    localStorage.setItem('me-theme', e.target.value);
-    console.log('[THEME]', e.target.value);
-  });
-}
-
-/* -------------------------
+/* ---------------------------
    NAVIGATION
--------------------------- */
+---------------------------- */
 function initNavigation() {
-  const buttons = document.querySelectorAll('nav button[data-page]');
+  const buttons = document.querySelectorAll('button[data-page]');
   const pages = document.querySelectorAll('.page');
+
+  function showPage(id) {
+    pages.forEach(p => (p.style.display = 'none'));
+    const page = document.getElementById(id);
+    if (page) page.style.display = 'block';
+  }
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const target = btn.dataset.page;
-
-      pages.forEach(p => p.classList.remove('active'));
-      const page = document.getElementById(target);
-      if (page) page.classList.add('active');
-
-      console.log('[NAV]', target);
+      const page = btn.dataset.page;
+      console.log('[NAV] Click:', page);
+      showPage(page);
     });
   });
+
+  showPage('dashboard');
 }
 
-/* -------------------------
-   COUNTERS
--------------------------- */
-function incrementCounter(key) {
-  const next = (parseInt(localStorage.getItem(key)) || 0) + 1;
-  localStorage.setItem(key, next);
+/* ---------------------------
+   THEME
+---------------------------- */
+function initTheme() {
+  const select = document.getElementById('themeSelect');
+  if (!select) return;
 
-  const el = document.querySelector(`[data-counter="${key}"]`);
-  if (el) el.textContent = next;
-}
+  const saved = localStorage.getItem('me-theme') || 'light';
+  document.body.dataset.theme = saved;
+  select.value = saved;
 
-/* -------------------------
-   UPLOAD (MOCK)
--------------------------- */
-function initUpload() {
-  const fileInput = document.getElementById('invoiceFile');
-  const uploadBtn = document.getElementById('uploadBtn');
-  const status = document.getElementById('uploadStatus');
-
-  if (!fileInput || !uploadBtn || !status) return;
-
-  uploadBtn.addEventListener('click', () => {
-    const file = fileInput.files[0];
-    if (!file) {
-      status.textContent = 'Please select a file';
-      return;
-    }
-
-    status.textContent = 'Processing ' + file.name + '...';
-
-    setTimeout(() => {
-      incrementCounter('totalInvoices');
-      incrementCounter('processedInvoices');
-      status.textContent = 'Processed ' + file.name;
-    }, 800);
+  select.addEventListener('change', e => {
+    document.body.dataset.theme = e.target.value;
+    localStorage.setItem('me-theme', e.target.value);
   });
 }
 
-/* -------------------------
-   BOOT
--------------------------- */
+/* ---------------------------
+   INIT
+---------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  initThemes();
+  console.log('[ME] DOM ready');
   initNavigation();
-  initUpload();
-
-  ['totalInvoices', 'processedInvoices', 'errorInvoices'].forEach(key => {
-    const val = localStorage.getItem(key) || 0;
-    const el = document.querySelector(`[data-counter="${key}"]`);
-    if (el) el.textContent = val;
-  });
-
-  console.log('[ME] App initialized');
+  initTheme();
 });
