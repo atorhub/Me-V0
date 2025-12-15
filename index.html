@@ -62,42 +62,41 @@
   </div>
 </section>
 
-<section id="upload" class="page">
+  <section id="upload" class="page">
   <h1 data-i18n="upload_title">Upload Invoice</h1>
   <p data-i18n="upload_desc">Select an invoice file to process.</p>
-  
-  voice file to process.</p>
 
   <div class="upload-box">
     <input type="file" id="invoiceFile" accept=".jpg,.png,.pdf" />
     <button id="uploadBtn" data-i18n="upload_btn">Upload</button>
   </div>
-<!-- Invoice Preview -->
-<div class="preview-box" id="previewBox" style="display:none;">
-  <h3>Invoice Preview</h3>
-  <img id="imagePreview" style="max-width:100%; display:none;" />
-  <div id="pdfPreview" style="display:none;">
-    <p><strong>PDF File:</strong> <span id="pdfName"></span></p>
-  </div>
-</div>
 
-<!-- OCR Result -->
-<div class="ocr-box" id="ocrBox" style="display:none;">
-  <h3>OCR Result (Mock)</h3>
-
-  <div class="ocr-fields">
-    <p><strong>Invoice No:</strong> <span id="ocrInvoice">—</span></p>
-    <p><strong>Date:</strong> <span id="ocrDate">—</span></p>
-    <p><strong>Total:</strong> <span id="ocrTotal">—</span></p>
+  <!-- Invoice Preview -->
+  <div class="preview-box" id="previewBox" style="display:none;">
+    <h3>Invoice Preview</h3>
+    <img id="imagePreview" style="max-width:100%; display:none;" />
+    <div id="pdfPreview" style="display:none;">
+      <p><strong>PDF File:</strong> <span id="pdfName"></span></p>
+    </div>
   </div>
 
-  <pre id="ocrRaw" class="ocr-raw"></pre>
-</div>
-  
+  <!-- OCR Result -->
+  <div class="ocr-box" id="ocrBox" style="display:none;">
+    <h3>OCR Result (Mock)</h3>
+
+    <div class="ocr-fields">
+      <p><strong>Invoice No:</strong> <span id="ocrInvoice"></span></p>
+      <p><strong>Date:</strong> <span id="ocrDate"></span></p>
+      <p><strong>Total:</strong> <span id="ocrTotal"></span></p>
+    </div>
+
+    <pre id="ocrRaw" class="ocr-raw"></pre>
+  </div>
+
   <p id="uploadStatus" class="upload-status" data-i18n="upload_status_idle">
     No file selected.
   </p>
-</section>
+  </section>
   
 
   <section id="ocr" class="page">
