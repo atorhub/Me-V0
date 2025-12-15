@@ -187,19 +187,47 @@ const uploadBtn = document.getElementById("uploadBtn");
 const uploadStatus = document.getElementById("uploadStatus");
 
 if (uploadBtn) {
-  uploadBtn.addEventListener("click", () => {
-    if (!fileInput.files.length) {
-      uploadStatus.textContent = "No file selected.";
-      console.warn("[UPLOAD] No file selected");
-      return;
-    }
+  document.getElementById("uploadBtn").addEventListener("click", () => {
+  const fileInput = document.getElementById("invoiceFile");
+  const file = fileInput.files[0];
+  if (!file) return;
 
-    const file = fileInput.files[0];
-    uploadStatus.textContent = `Selected: ${file.name}`;
-    console.log("[UPLOAD] File selected:", file.name);
-  });
-    }
+  // Preview logic
+  const previewBox = document.getElementById("previewBox");
+  const imgPreview = document.getElementById("imagePreview");
+  const pdfPreview = document.getElementById("pdfPreview");
+  const pdfName = document.getElementById("pdfName");
 
+  previewBox.style.display = "block";
+  imgPreview.style.display = "none";
+  pdfPreview.style.display = "none";
+
+  if (file.type.startsWith("image/")) {
+    imgPreview.src = URL.createObjectURL(file);
+    imgPreview.style.display = "block";
+  } else if (file.type === "application/pdf") {
+    pdfName.textContent = file.name;
+    pdfPreview.style.display = "block";
+  }
+
+  // Mock OCR result
+  const ocrBox = document.getElementById("ocrBox");
+  ocrBox.style.display = "block";
+
+  document.getElementById("ocrInvoice").textContent = "INV-" + Math.floor(Math.random() * 9000);
+  document.getElementById("ocrDate").textContent = "2025-01-12";
+  document.getElementById("ocrTotal").textContent = "₹ 1,245.00";
+
+  document.getElementById("ocrRaw").textContent =
+    `Invoice Number: INV-1234
+Date: 12/01/2025
+Total Amount: Rs 1,245.00
+Vendor: Sample Store Pvt Ltd`;
+
+  // Update counters
+  incrementCounter("totalInvoices");
+  incrementCounter("processedInvoices");
+});
 
 /* =========================
    PAGE NAVIGATION — PHASE 1
