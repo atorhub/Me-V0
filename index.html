@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ME V0</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ME V0</title>
 
   <style>
     body {
@@ -15,43 +15,38 @@
     header {
       padding: 10px;
       border-bottom: 1px solid #ccc;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
-    nav button {
-      margin-right: 6px;
+    button {
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 16px;
     }
 
     .page {
       display: none;
-      padding: 16px;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    .counters {
-      display: flex;
-      gap: 40px;
-      margin: 20px 0;
     }
 
     footer {
       padding: 10px;
       border-top: 1px solid #ccc;
       font-size: 12px;
-      color: #555;
     }
 
     .debug-panel {
       position: fixed;
       bottom: 10px;
       right: 10px;
-      background: #111;
-      color: #0f0;
-      font-size: 12px;
+      background: black;
+      color: lime;
       padding: 6px;
-      border-radius: 6px;
+      font-size: 11px;
     }
   </style>
 </head>
@@ -59,68 +54,45 @@
 <body>
 
 <header>
-  <strong>ME V0</strong>
-
-  <nav>
-    <button data-page="dashboard">Dashboard</button>
-    <button data-page="upload">Upload</button>
-    <button data-page="ocr">OCR</button>
-    <button data-page="live">Live OCR</button>
-    <button data-page="history">History</button>
-    <button data-page="translate">Translate</button>
-    <button data-page="settings">Settings</button>
-    <button data-page="help">Help</button>
-  </nav>
+  <button data-page="dashboard">Dashboard</button>
+  <button data-page="upload">Upload</button>
+  <button data-page="ocr">OCR</button>
+  <button data-page="live">Live OCR</button>
+  <button data-page="history">History</button>
+  <button data-page="translate">Translate</button>
+  <button data-page="settings">Settings</button>
+  <button data-page="help">Help</button>
 
   <select id="themeSelect">
     <option value="light">Light</option>
     <option value="dark">Dark</option>
-    <option value="midnight">Midnight</option>
   </select>
 </header>
 
 <main>
-
-  <section id="dashboard" class="page active">
+  <section id="dashboard" class="page">
     <h1>Dashboard</h1>
     <p>System status and analytics</p>
-
-    <div class="counters">
-      <div>
-        <div data-counter="totalInvoices">0</div>
-        <small>Total Invoices</small>
-      </div>
-      <div>
-        <div data-counter="processedInvoices">0</div>
-        <small>Processed</small>
-      </div>
-      <div>
-        <div data-counter="errorInvoices">0</div>
-        <small>Errors</small>
-      </div>
-    </div>
   </section>
 
   <section id="upload" class="page">
     <h1>Upload</h1>
-    <input type="file" id="invoiceFile" />
-    <button id="uploadBtn">Upload</button>
-    <div id="uploadStatus"></div>
+    <p>Upload invoices</p>
   </section>
 
   <section id="ocr" class="page">
     <h1>OCR</h1>
-    <p>Image OCR engine (Phase 2)</p>
+    <p>Image OCR engine</p>
   </section>
 
   <section id="live" class="page">
     <h1>Live OCR</h1>
-    <p>Camera OCR (Phase 3)</p>
+    <p>Camera OCR</p>
   </section>
 
   <section id="history" class="page">
     <h1>History</h1>
-    <p>Processed invoices history</p>
+    <p>Processed invoices</p>
   </section>
 
   <section id="translate" class="page">
@@ -144,17 +116,15 @@
     <h1>Help</h1>
     <p>User guide & tips</p>
   </section>
-
 </main>
 
 <footer>
-  ME V0 — Phase 1 UI · Debug Enabled
+  ME V0 – Phase 1 UI · Debug Enabled
 </footer>
 
-<div class="debug-panel">
-  ME Debug
-</div>
+<div class="debug-panel">ME Debug</div>
 
-<script src="./script.js"></script>
+<!-- IMPORTANT: ABSOLUTE PATH -->
+<script src="/Me-V0/script.js"></script>
 </body>
 </html>
