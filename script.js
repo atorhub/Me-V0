@@ -341,4 +341,29 @@ function animateCounters() {
     tick();
   });
 }
+// ===== Invoice Counters =====
+let totalInvoices = 0;
+let processedInvoices = 0;
+let errorInvoices = 0;
+
+function updateCounters() {
+  document.querySelector('[data-counter="totalInvoices"]').textContent = totalInvoices;
+  document.querySelector('[data-counter="processedInvoices"]').textContent = processedInvoices;
+  document.querySelector('[data-counter="errorInvoices"]').textContent = errorInvoices;
+}
+
+document.getElementById("uploadBtn").addEventListener("click", () => {
+  const fileInput = document.getElementById("invoiceFile");
+
+  if (!fileInput.files.length) {
+    alert("Please select an invoice first");
+    return;
+  }
+
+  // simulate upload
+  totalInvoices++;
+  processedInvoices++;
+
+  updateCounters();
+});
 
