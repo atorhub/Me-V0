@@ -2,184 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ME V0 — Multi-Lang Invoice Engine</title>
+  <title>ME V0</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav button {
+      margin-right: 6px;
+    }
+
+    .page {
+      display: none;
+      padding: 16px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .counters {
+      display: flex;
+      gap: 40px;
+      margin: 20px 0;
+    }
+
+    footer {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .debug-panel {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: #111;
+      color: #0f0;
+      font-size: 12px;
+      padding: 6px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="topbar">
-  <div class="logo">ME <span>V0</span></div>
+<header>
+  <strong>ME V0</strong>
 
   <nav>
-    <button data-page="dashboard" data-i18n="nav_dashboard">Dashboard</button>
-<button data-page="upload" data-i18n="nav_upload">Upload</button>
-<button data-page="ocr" data-i18n="nav_ocr">OCR</button>
-<button data-page="live" data-i18n="nav_live_ocr">Live OCR</button>
-<button data-page="history" data-i18n="nav_history">History</button>
-<button data-page="translate" data-i18n="nav_translate">Translate</button>
-<button data-page="settings" data-i18n="nav_settings">Settings</button>
-<button data-page="help" data-i18n="nav_help">Help</button>
-    
+    <button data-page="dashboard">Dashboard</button>
+    <button data-page="upload">Upload</button>
+    <button data-page="ocr">OCR</button>
+    <button data-page="live">Live OCR</button>
+    <button data-page="history">History</button>
+    <button data-page="translate">Translate</button>
+    <button data-page="settings">Settings</button>
+    <button data-page="help">Help</button>
   </nav>
 
   <select id="themeSelect">
-    <option value="rose">Rose</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
     <option value="midnight">Midnight</option>
-    <option value="zen">Zen</option>
   </select>
 </header>
 
-<main id="app">
+<main>
 
   <section id="dashboard" class="page active">
-  <h1 data-i18n="dashboard_title">Dashboard</h1>
-  <p data-i18n="dashboard_desc">System status and analytics</p>
-<div class="stats-grid">
+    <h1>Dashboard</h1>
+    <p>System status and analytics</p>
 
-  <div class="stat-card">
-    <div class="stat-number" data-counter="totalInvoices">0</div>
-    <div class="stat-label">Total Invoices</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-number" data-counter="processedInvoices">0</div>
-    <div class="stat-label">Processed</div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-number" data-counter="errorInvoices">0</div>
-    <div class="stat-label">Errors</div>
-  </div>
-
-</div>
-    
-
-  <div class="chart-box">
-    <h3>Invoices Overview</h3>
-    <canvas id="invoiceChart"></canvas>
-  </div>
-</section>
+    <div class="counters">
+      <div>
+        <div data-counter="totalInvoices">0</div>
+        <small>Total Invoices</small>
+      </div>
+      <div>
+        <div data-counter="processedInvoices">0</div>
+        <small>Processed</small>
+      </div>
+      <div>
+        <div data-counter="errorInvoices">0</div>
+        <small>Errors</small>
+      </div>
+    </div>
+  </section>
 
   <section id="upload" class="page">
-  <h1 data-i18n="upload_title">Upload Invoice</h1>
-  <p data-i18n="upload_desc">Select an invoice file to process.</p>
-
-  <div class="upload-box">
-    <input type="file" id="invoiceFile" accept=".jpg,.png,.pdf" />
-    <button id="uploadBtn" data-i18n="upload_btn">Upload</button>
-  </div>
-
-  <!-- Invoice Preview -->
-  <div class="preview-box" id="previewBox" style="display:none;">
-    <h3>Invoice Preview</h3>
-    <img id="imagePreview" style="max-width:100%; display:none;" />
-    <div id="pdfPreview" style="display:none;">
-      <p><strong>PDF File:</strong> <span id="pdfName"></span></p>
-    </div>
-  </div>
-
-  <!-- OCR Result -->
-  <div class="ocr-box" id="ocrBox" style="display:none;">
-    <h3>OCR Result (Mock)</h3>
-
-    <div class="ocr-fields">
-      <p><strong>Invoice No:</strong> <span id="ocrInvoice"></span></p>
-      <p><strong>Date:</strong> <span id="ocrDate"></span></p>
-      <p><strong>Total:</strong> <span id="ocrTotal"></span></p>
-    </div>
-
-    <pre id="ocrRaw" class="ocr-raw"></pre>
-  </div>
-
-  <p id="uploadStatus" class="upload-status" data-i18n="upload_status_idle">
-    No file selected.
-  </p>
+    <h1>Upload</h1>
+    <input type="file" id="invoiceFile" />
+    <button id="uploadBtn">Upload</button>
+    <div id="uploadStatus"></div>
   </section>
-  
 
   <section id="ocr" class="page">
     <h1>OCR</h1>
-    <p>Image OCR engine (Phase 2).</p>
+    <p>Image OCR engine (Phase 2)</p>
   </section>
 
   <section id="live" class="page">
     <h1>Live OCR</h1>
-    <p>Camera OCR (Phase 3).</p>
+    <p>Camera OCR (Phase 3)</p>
   </section>
 
   <section id="history" class="page">
     <h1>History</h1>
-    <p>Processed invoices history.</p>
+    <p>Processed invoices history</p>
   </section>
 
   <section id="translate" class="page">
     <h1>Translate</h1>
-    <p>Text translation UI.</p>
+    <p>Text translation UI</p>
   </section>
-<section id="settings" class="page">
-  <h1 data-i18n="settings_title">Settings</h1>
 
-  <p data-i18n="settings_desc">
-    Language, voice, theme controls.
-  </p>
-
-  <div class="settings-group">
-    <label for="langSelect" data-i18n="settings_language">
-      Language
-    </label>
-
-    <select id="langSelect">
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-      <option value="pa">Punjabi</option>
-      <option value="id">Indonesian</option>
-      <option value="pt">Portuguese</option>
-    </select>
-  </div>
-
-  <div class="settings-group">
+  <section id="settings" class="page">
+    <h1>Settings</h1>
     <label>
-      <input type="checkbox" id="voiceToggle">
-      <span data-i18n="settings_voice">
-        Voice Input (coming soon)
-      </span>
+      Language:
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="pa">Punjabi</option>
+      </select>
     </label>
-  </div>
+  </section>
 
-  <div class="settings-group">
-    <label>
-      <input type="checkbox" id="cameraToggle">
-      <span data-i18n="settings_camera">
-        Camera OCR (coming soon)
-      </span>
-    </label>
-  </div>
-</section>
-  
-  
   <section id="help" class="page">
     <h1>Help</h1>
-    <p>User guide & tips.</p>
+    <p>User guide & tips</p>
   </section>
 
 </main>
 
-<footer class="footer">
-  ME V0 — Phase 1 UI • Debug Enabled
+<footer>
+  ME V0 — Phase 1 UI · Debug Enabled
 </footer>
 
-  <!-- Debug Panel -->
-<div id="debugPanel" class="debug-panel">
-  <div class="debug-header">
-    <span>ME Debug</span>
-    <button id="debugClear">Clear</button>
-    <button id="debugToggle">Hide</button>
-  </div>
-  <div id="debugLog" class="debug-log"></div>
+<div class="debug-panel">
+  ME Debug
 </div>
 
 <script src="./script.js"></script>
-</body> 
+</body>
 </html>
