@@ -1,4 +1,5 @@
 console.log('[ME] script.js loaded');
+alert("SCRIPT IS LOADING");
 
 /* -------------------------
    THEME
